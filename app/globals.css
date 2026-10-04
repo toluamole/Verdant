@@ -1,26 +1,140 @@
 @import "tailwindcss";
+@plugin "../plugins/fluid/index.ts";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #1c1612;
+	--foreground: #faf5ed;
+	--muted: #bfbebe;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-muted: var(--muted);
+
+	--color-surface: #372c23;
+	--color-forest: #13200d;
+	--color-olive: #4c3d19;
+	--color-moss: #2a3f20;
+
+	--color-light: #f7f5f1;
+	--color-light-foreground: #000000;
+	--color-light-muted: #535353;
+	--color-card: #dedede;
+
+	--color-sage: #e6ebe0;
+	--color-sage-strong: #f4f6f0;
+	--color-sage-foreground: #001d21;
+
+	--color-accent: #b8684f;
+	--color-accent-foreground: #f0e6d4;
+
+	--color-button: #131313;
+	--color-button-foreground: #ffffff;
+
+	--color-brand-cream: #f0e6d4;
+
+	--font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+	--font-display: var(--font-berlingske-serif), ui-serif, Georgia, serif;
+	--font-accent:
+		var(--font-labil-grotesk), var(--font-inter), ui-sans-serif, sans-serif;
+
+	--fluid-viewport-mobile: 393px;
+	--fluid-viewport-desktop: 1400px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@layer base {
+	button:not(:disabled),
+	[role="button"]:not(:disabled) {
+		cursor: pointer;
+	}
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-sans);
+}
+
+@layer utilities {
+	.surface-footer {
+		--foreground: #f0e6d4;
+		--muted: #bfbebe;
+		background: linear-gradient(to bottom, #131313, #010201);
+		color: var(--foreground);
+	}
+
+	.surface-glass {
+		--foreground: #ffffff;
+		--muted: #bfbebe;
+		background: rgb(55 44 35 / 0.2);
+		color: var(--foreground);
+		backdrop-filter: blur(24px);
+		-webkit-backdrop-filter: blur(24px);
+		box-shadow: 0 4px 4px rgb(0 0 0 / 0.07);
+	}
+
+	.surface-dark {
+		--background: #372c23;
+		--foreground: #faf5ed;
+		--muted: #bfbebe;
+		background: var(--background);
+		color: var(--foreground);
+	}
+
+	.surface-forest {
+		--background: #13200d;
+		--foreground: #faf5ed;
+		--muted: #bfbebe;
+		background: var(--background);
+		color: var(--foreground);
+	}
+
+	.surface-olive {
+		--background: #4c3d19;
+		--foreground: #faf5ed;
+		--muted: #bfbebe;
+		background: var(--background);
+		color: var(--foreground);
+	}
+
+	.surface-moss {
+		--background: #2a3f20;
+		--foreground: #faf5ed;
+		--muted: #bfbebe;
+		background: var(--background);
+		color: var(--foreground);
+	}
+
+	.surface-accent {
+		--background: #b8684f;
+		--foreground: #f0e6d4;
+		--muted: #f0e6d4;
+		background: var(--background);
+		color: var(--foreground);
+	}
+
+	.surface-light {
+		--background: #f7f5f1;
+		--foreground: #000000;
+		--muted: #535353;
+		background: var(--background);
+		color: var(--foreground);
+	}
+
+	.surface-sage {
+		--background: #e6ebe0;
+		--foreground: #001d21;
+		--muted: #535353;
+		background: var(--background);
+		color: var(--foreground);
+	}
+
+	.surface-card {
+		--background: #dedede;
+		--foreground: #000000;
+		--muted: #535353;
+		background: var(--background);
+		color: var(--foreground);
+	}
 }
