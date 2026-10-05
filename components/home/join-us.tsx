@@ -4,9 +4,9 @@ import { Label, Paragraph, Title } from "@/components/ui/typography";
 
 export function JoinUs() {
 	return (
-		<section className="flex-col  md:flex justify-between gap-10 p-6 md:flex-row md:gap-20 md:p-[52px]">
-			<div className="flex flex-1 flex-col gap-[60px] md:gap-[120px]">
-				<div className="flex flex-col gap-4">
+		<section className="flex-col justify-between gap-10 p-6 md:flex md:flex-row md:fl-gap-[80px]/desktop md:fl-p-[52px]/desktop">
+			<div className="flex flex-1 flex-col gap-[60px] md:fl-gap-[120px]/desktop">
+				<div className="flex flex-col gap-4 md:fl-gap-[16px]/desktop">
 					<Label variant="2" className="text-light-muted">
 						Join us
 					</Label>

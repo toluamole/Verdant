@@ -5,8 +5,8 @@ const steps = [1, 2, 3, 4];
 
 export function Story() {
 	return (
-		<section className="surface-light flex flex-col gap-12 p-6 md:p-[52px]">
-			<div className="flex flex-col gap-4">
+		<section className="surface-light flex flex-col gap-12 p-6 md:fl-gap-[48px]/desktop md:fl-p-[52px]/desktop">
+			<div className="flex flex-col gap-4 md:fl-gap-[16px]/desktop">
 				<Label variant="2" className="text-light-muted">
 					Story
 				</Label>
@@ -21,7 +21,7 @@ export function Story() {
 				{steps.map((step, index) => (
 					<li
 						key={step}
-						className="flex flex-1 flex-col items-center gap-6"
+						className="flex flex-1 flex-col items-center gap-6 md:fl-gap-[24px]/desktop"
 					>
 						<Numeral className={cn(index > 0 && "text-[#AEAEAE]")}>
 							{step}
@@ -37,7 +37,7 @@ export function Story() {
 							/>
 							<span
 								className={cn(
-									"size-2 rounded-full",
+									"size-2 rounded-full md:fl-size-[8px]/desktop",
 									index === 0
 										? "bg-light-foreground"
 										: "bg-[#D7D7D7]",
