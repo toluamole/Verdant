@@ -1,0 +1,7 @@
+{
+  "useTabs": true,
+  "tabWidth": 4,
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindFunctions": ["cn", "clsx", "cva"],
+  "tailwindStylesheet": "./app/globals.css"
+}
