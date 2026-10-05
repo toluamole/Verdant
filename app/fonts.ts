@@ -7,7 +7,6 @@ export const inter = Inter({
 	display: "swap",
 });
 
-
 export const labilGrotesk = localFont({
 	src: "./fonts/LabilGrotesk-Medium.woff2",
 	weight: "500",
@@ -15,7 +14,6 @@ export const labilGrotesk = localFont({
 	variable: "--font-labil-grotesk",
 	display: "swap",
 });
-
 
 export const berlingskeSerif = localFont({
 	src: [
