@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AboutCta } from "@/components/about/cta";
+import { Cta } from "@/components/shared/cta";
 import { AboutHero } from "@/components/about/hero";
 import { AboutServices } from "@/components/about/service-tabs";
 import { Footer } from "@/components/layout/footer";
@@ -18,7 +18,7 @@ export default function About() {
 			<main className="flex flex-col gap-5 md:fl-gap-[20px]/desktop">
 				<AboutHero />
 				<AboutServices />
-				<AboutCta />
+				<Cta image="/images/about/cta-bg.webp" overlay={0.59} />
 			</main>
 			<Footer />
 		</div>

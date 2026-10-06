@@ -1,27 +1,6 @@
-import {
-	CardSlide,
-	FeatureSlide,
-	placeholderBody,
-} from "@/components/services/slides";
+import { FeatureSlide, services } from "@/components/services/slides";
 import { ServicesSlider } from "@/components/services/slider";
 import { Paragraph, Title } from "@/components/ui/typography";
-
-const cardSlides = [
-	{
-		title: "Strategy development",
-		body: placeholderBody,
-		surface: "bg-olive/80",
-		texture: "/images/home/panel-texture.webp",
-		media: "/images/home/slide-strategy.webp",
-	},
-	{
-		title: "Strategy development",
-		body: placeholderBody,
-		surface: "bg-accent",
-		texture: "/images/home/panel-texture-alt.webp",
-		media: null,
-	},
-];
 
 export function Services() {
 	return (
@@ -39,10 +18,10 @@ export function Services() {
 			</section>
 
 			<section className="surface-forest overflow-hidden py-6 md:fl-py-[52px]/desktop">
-				<ServicesSlider>
-					<CardSlide slide={cardSlides[0]} />
-					<FeatureSlide />
-					<CardSlide slide={cardSlides[1]} />
+				<ServicesSlider initialIndex={0}>
+					{services.map((service, index) => (
+						<FeatureSlide key={index} content={service} />
+					))}
 				</ServicesSlider>
 			</section>
 		</>
