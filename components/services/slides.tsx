@@ -60,12 +60,6 @@ export function CardSlide({ slide }: { slide: Slide }) {
 	);
 }
 
-const outcomes = [
-	"Readiness assessments identifying gaps before investors do.",
-	"Financial narratives that translate complexity into clarity",
-	"Readiness assessments identifying gaps before investors do.",
-];
-
 const outcomeItems = [
 	{
 		text: 0,
@@ -84,33 +78,123 @@ const outcomeItems = [
 	},
 ];
 
+export type ServiceContent = {
+	title: React.ReactNode;
+	body: string;
+	outcomes: [string, string, string];
+	panel: string;
+	/** Block base colour; the leaf texture sits over it at 20%. */
+	surface: string;
+};
+
+export const services: ServiceContent[] = [
+	{
+		title: (
+			<>
+				Funding &amp;
+				<br />
+				Capital Readiness
+			</>
+		),
+		body: "Face scrutiny with confidence. You’re raising capital or preparing for an audit. Investors will dig into your financials, and your story needs to be airtight",
+		outcomes: [
+			"Readiness assessments identifying gaps before investors do.",
+			"Financial narratives that translate complexity into clarity",
+			"Readiness assessments identifying gaps before investors do.",
+		],
+		panel: "/images/services/panel-funding.webp",
+		surface: "#2A3F20",
+	},
+	{
+		title: (
+			<>
+				Budgeting &amp;
+				<br />
+				Resource Planning
+			</>
+		),
+		body: "Align resources with operational reality. Traditional budgets disconnect from operations. You need budgets that show what’s actually possible within your constraints.",
+		outcomes: [
+			"Resource allocation tied to staffing and programs",
+			"Capacity-aware planning linking dollars to outcomes",
+			"Board materials communicating tradeoffs clearly",
+		],
+		panel: "/images/home/wood-rings.webp",
+		surface: "#7D3520",
+	},
+	{
+		title: "Financial Modeling & Scenario planning",
+		body: "Understand your options before you commit. Strategic decisions have financial ripple effects. You need to see tradeoffs between paths, not just one possible future.",
+		outcomes: [
+			"Multi-year forecasts tied to staffing and infrastructure",
+			"Scenario analysis with clear decision triggers",
+			"Runway and capacity visibility",
+		],
+		panel: "/images/services/panel-modeling.webp",
+		surface: "#4C3D19",
+	},
+	{
+		title: "Operations Infrastructure",
+		body: "Build systems that scale without breaking things. You’ve outgrown spreadsheets but can’t afford over-engineering. You need the right systems for your stage.",
+		outcomes: [
+			"Right-sized systems that professionalize without bloat",
+			"Process documentation teams actually follow",
+			"Technology recommendations that integrate",
+		],
+		panel: "/images/home/difference-bg.webp",
+		surface: "#372C23",
+	},
+	{
+		title: (
+			<>
+				Stakeholder Reporting &amp;
+				<br />
+				Communications
+			</>
+		),
+		body: "Transform data into stakeholder confidence. Different stakeholders need different information. Generic reports satisfy no one, and custom reports for each group aren’t sustainable.",
+		outcomes: [
+			"Narrative-driven materials connecting finance to outcomes",
+			"Multi-stakeholder frameworks from one source of truth",
+			"Decision-focused packages, not just historical data",
+		],
+		panel: "/images/about/cta-bg.webp",
+		surface: "#1C1612",
+	},
+];
+
+/** Figma layers the leaf texture at 20% over the block colour. */
+const wash = (hex: string) => `color-mix(in srgb, ${hex} 80%, transparent)`;
+
 export function FeatureSlide({
+	content = services[0],
 	ctaVariant = "outline",
+	layout = "slide",
 }: {
+	content?: ServiceContent;
 	ctaVariant?: "outline" | "solid";
+	layout?: "slide" | "block";
 }) {
+	const sizing =
+		layout === "slide"
+			? "w-[88vw] shrink-0 snap-center md:fl-w-[1243px]/desktop"
+			: "w-full md:fl-w-[1248px]/desktop";
+
 	return (
 		<article
-			className="surface-moss relative flex w-[88vw] shrink-0 snap-center flex-col gap-8 overflow-hidden rounded-[20px] bg-cover bg-center p-6 md:fl-w-[1243px]/desktop md:flex-row md:justify-between md:fl-gap-[32px]/desktop md:fl-rounded-[20px]/desktop md:fl-p-[52px]/desktop"
+			className={`surface-moss relative flex ${sizing} flex-col gap-8 overflow-hidden rounded-[20px] bg-cover bg-center p-6 md:flex-row md:justify-between md:fl-gap-[32px]/desktop md:fl-rounded-[20px]/desktop md:fl-p-[52px]/desktop`}
 			style={{
-				backgroundImage:
-					"linear-gradient(rgba(42,63,32,0.82), rgba(42,63,32,0.82)), url(/images/home/panel-texture.webp)",
+				backgroundColor: content.surface,
+				backgroundImage: `linear-gradient(${wash(content.surface)}, ${wash(content.surface)}), url(/images/home/panel-texture.webp)`,
 			}}
 		>
 			<div className="flex flex-col justify-between md:fl-w-[448px]/desktop md:fl-py-[42px]/desktop">
 				<div className="flex flex-col gap-[31px]">
 					<Heading variant="2" as="h3" className="text-brand-cream">
-						Funding &amp;
-						<br />
-						Capital Readiness
+						{content.title}
 					</Heading>
 					<Paragraph variant="4" className="max-w-[309px]">
-						Face scrutiny with confidence. You&rsquo;re raising
-						capital or
-					</Paragraph>
-					<Paragraph variant="4">
-						preparing for an audit. Investors will dig into your
-						financials, and your story needs to be airtight
+						{content.body}
 					</Paragraph>
 				</div>
 				<Button
@@ -124,7 +208,7 @@ export function FeatureSlide({
 
 			<div
 				className="relative aspect-[649/499] w-full shrink-0 overflow-hidden rounded-[5px] bg-cover bg-center md:fl-w-[649px]/desktop"
-				style={{ backgroundImage: "url(/images/home/wood-rings.webp)" }}
+				style={{ backgroundImage: `url(${content.panel})` }}
 			>
 				<div className="absolute inset-0 bg-white/10" />
 				<div className="absolute inset-[13px] rounded-[3px] bg-[#1C1612]/34" />
@@ -153,7 +237,7 @@ export function FeatureSlide({
 						className="absolute"
 						style={item.pos}
 					>
-						{outcomes[item.text]}
+						{content.outcomes[item.text]}
 					</Paragraph>
 				))}
 			</div>
