@@ -150,3 +150,7 @@ body {
 		color: var(--foreground);
 	}
 }
+
+html:has(dialog[open]) {
+	overflow: hidden;
+}

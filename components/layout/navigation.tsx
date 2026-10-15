@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
+import { MobileMenu } from "@/components/layout/mobile-menu";
 import { Paragraph } from "@/components/ui/typography";
 
 const links = [
@@ -12,9 +13,12 @@ const links = [
 
 export function Navigation() {
 	return (
-		<header className="surface-glass flex items-center justify-between rounded-[20px] px-7 py-4 md:fl-h-[80px]/desktop md:fl-rounded-[20px]/desktop md:fl-py-[16px]/desktop md:fl-px-[28px]/desktop">
+		<header className="surface-glass flex items-center justify-between rounded-[20px] px-5 py-3 md:fl-h-[80px]/desktop md:fl-rounded-[20px]/desktop md:fl-py-[16px]/desktop md:fl-px-[28px]/desktop">
 			<Link href="/" aria-label="Verdant home">
-				<Logo width={163} className="h-auto md:fl-w-[163px]/desktop" />
+				<Logo
+					width={163}
+					className="h-auto w-[130px] md:fl-w-[163px]/desktop"
+				/>
 			</Link>
 			<nav className="hidden items-center gap-5 md:flex md:fl-gap-[20px]/desktop">
 				{links.map((link) => (
@@ -42,7 +46,8 @@ export function Navigation() {
 					</Link>
 				))}
 			</nav>
-			<Button>Get Started</Button>
+			<Button className="hidden md:inline-flex">Get Started</Button>
+			<MobileMenu links={links} />
 		</header>
 	);
 }
